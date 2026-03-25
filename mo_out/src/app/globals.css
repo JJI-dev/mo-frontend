@@ -94,7 +94,7 @@ input, textarea { font-family: var(--font); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 14px 28px;
+  padding: 20px 28px;
   transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
   border-bottom: 1px solid transparent;
 }
