@@ -138,17 +138,8 @@ function WorkContent() {
           <p style={{ color: 'rgba(255,255,255,0.25)', fontSize: 13, letterSpacing: '-0.02em', gridColumn: '1/-1', textAlign: 'center', paddingTop: 80 }}>
             프로젝트가 없습니다
           </p>
-        ) : filtered.map((item, index) => (
-          <Link 
-            /* ★ 카테고리 전환 시 애니메이션 재실행을 위해 key에 cat 추가 */
-            key={`${cat}-${item.id}`} 
-            href={`/work/${item.id}`} 
-            className="work-item work-item-anim" 
-            style={{ 
-              /* ★ 인덱스 기반으로 지연 시간(Delay) 부여하여 스태거 효과 연출 */
-              animationDelay: `${index * 0.06}s` 
-            }}
-          >
+        ) : filtered.map(item => (
+          <Link key={item.id} href={`/work/${item.id}`} className="work-item">
             <div className="work-thumb">
               <div className="work-thumb-inner" />
             </div>
@@ -160,31 +151,12 @@ function WorkContent() {
         ))}
       </div>
 
-      {/* ★ 애니메이션 CSS 추가 */}
       <style>{`
         @media (max-width: 768px) {
           .work-root    { flex-direction: row; padding-top: 80px; }
           .work-sidebar { display: none; }
           .work-mob-cats { display: flex !important; }
           .work-grid    { padding: 0 var(--px); flex: 1; }
-        }
-
-        /* 순차적 슬라이드 업 키프레임 */
-        @keyframes fadeSlideUp {
-          from { 
-            opacity: 0; 
-            transform: translateY(30px); 
-          }
-          to { 
-            opacity: 1; 
-            transform: translateY(0); 
-          }
-        }
-
-        /* 아이템에 적용되는 애니메이션 클래스 */
-        .work-item-anim {
-          opacity: 0; /* 초기 상태 투명하게 설정 */
-          animation: fadeSlideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
         }
       `}</style>
     </div>
