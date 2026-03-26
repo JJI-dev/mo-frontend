@@ -4,7 +4,7 @@ import CursorAnimation from '@/components/ui/CursorAnimation'
 import Header from '@/components/layout/Header'
 
 export const metadata: Metadata = {
-  title: 'mo.jji.kr — Creative Studio',
+  title: 'JJI-MO: Studio',
   description: '웹, 모바일, 디자인 — 디지털 경험을 만드는 크리에이티브 스튜디오',
 }
 
