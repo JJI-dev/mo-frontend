@@ -19,7 +19,7 @@ export default function Footer() {
 
         <div className="footer-nav-group">
           <div className="footer-nav-col">
-            <p className="footer-nav-head">Navigation</p>
+            <p className="footer-nav-head">Pages</p>
             {NAV_LINKS.map(name => (
               <Link key={name} href={hrefs[name]} className="footer-nav-link">{name}</Link>
             ))}
@@ -27,7 +27,7 @@ export default function Footer() {
           <div className="footer-nav-col">
             <p className="footer-nav-head">Contact</p>
             <a href="mailto:hello@mo.jji.kr" className="footer-nav-link">contact@jji.kr</a>
-            <a href="https://mo.jji.kr" target="_blank" rel="noopener noreferrer" className="footer-nav-link">mo.jji.kr</a>
+            <a href="https://mo.jji.kr" target="_blank" rel="noopener noreferrer" className="footer-nav-link">mo@jji.kr</a>
           </div>
         </div>
       </div>
