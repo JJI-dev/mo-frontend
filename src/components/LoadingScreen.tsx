@@ -44,7 +44,7 @@ export default function LoadingScreen() {
   return (
     <div style={{
       position: 'fixed', inset: 0, zIndex: 9999,
-      background: '#ffffff', // 배경색
+      background: '#121212', // 배경색
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       opacity: isFadingOut ? 0 : 1,
       transition: 'opacity 0.5s ease-in-out',
