@@ -11,10 +11,12 @@ export default function WorkDetailClient({ item }: { item: WorkItem }) {
 
   useEffect(() => {
     const handler = (e: MessageEvent) => {
-      // iframe 높이 조정
-      if (e.data?.type === 'iframeHeight') setIframeH(e.data.height)
+      // 1. iframe 높이 조정 (제한 없이 측정된 높이 + 40px 여백으로 넉넉하게!)
+      if (e.data?.type === 'iframeHeight') {
+        setIframeH(Math.max(400, e.data.height + 40))
+      }
 
-      // iframe 내부 mousemove를 부모로 relay → CursorAnimation 유지
+      // 2. 마우스 이벤트 전달 유지 (커스텀 커서용)
       if (e.data?.type === 'mousemove') {
         const rect = iframeRef.current?.getBoundingClientRect()
         if (!rect) return
@@ -37,13 +39,13 @@ export default function WorkDetailClient({ item }: { item: WorkItem }) {
     { label: 'TYPE',     value: item.type     },
   ].filter(r => r.value)
 
-  // iframe 내부에서 mousemove를 부모로 postMessage
   const relayScript = `
     document.addEventListener('mousemove', function(e) {
       window.parent.postMessage({ type: 'mousemove', x: e.clientX, y: e.clientY }, '*');
     });
   `
 
+  // ★ 변경됨: document.documentElement.scrollHeight 를 사용하여 훨씬 정확하게 전체 콘텐츠 길이를 측정합니다.
   const iframeDoc = `<!DOCTYPE html>
 <html>
 <head>
@@ -55,8 +57,12 @@ export default function WorkDetailClient({ item }: { item: WorkItem }) {
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <script>
-window.addEventListener('load',()=>{window.parent.postMessage({type:'iframeHeight',height:document.body.scrollHeight},'*')});
-if(document.body){new ResizeObserver(()=>{window.parent.postMessage({type:'iframeHeight',height:document.body.scrollHeight},'*')}).observe(document.body);}
+function sendHeight() {
+  var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+  window.parent.postMessage({type:'iframeHeight',height:h},'*');
+}
+window.addEventListener('load', sendHeight);
+if(document.body){new ResizeObserver(sendHeight).observe(document.body);}
 ${relayScript}
 </script>
 </head>
@@ -74,7 +80,9 @@ ${relayScript}
             Work
           </Link>
           <h1 className="detail-title">{item.title}</h1>
-          <div className="detail-hero" />
+          <div className="detail-hero">
+            {/* Hero image placeholder or actual image can go here */}
+          </div>
           <div className="detail-meta">
             {metaRows.map(r => (
               <div key={r.label} className="detail-meta-item">
@@ -88,13 +96,7 @@ ${relayScript}
 
         {item.htmlContent && (
           <div style={{ position: 'relative' }}>
-            {/* 투명 overlay — iframe으로 마우스 이벤트가 빠지는 것을 막아 커서 애니메이션 유지 */}
-            <div style={{
-              position: 'absolute',
-              inset: 0,
-              zIndex: 2,
-              cursor: 'none',
-            }} />
+            {/* 오버레이 걷어냄, pointerEvents 허용됨 */}
             <iframe
               ref={iframeRef}
               srcDoc={iframeDoc}
@@ -103,7 +105,6 @@ ${relayScript}
                 height: iframeH,
                 border: 'none',
                 display: 'block',
-                pointerEvents: 'none',
               }}
               title={item.title}
             />
