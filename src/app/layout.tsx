@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import CursorAnimation from '@/components/ui/CursorAnimation'
 import Header from '@/components/layout/Header'
+import LoadingScreen from '@/components/LoadingScreen'
 
 export const metadata: Metadata = {
   title: 'JJI-MO: Studio',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
       <body>
+        <LoadingScreen />
         <CursorAnimation />
         <Header />
         <main style={{ minHeight: '100vh' }}>{children}</main>
