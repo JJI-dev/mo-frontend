@@ -23,7 +23,7 @@ const LogoMO = () => (
 
 const CATS = ['All', 'Web', 'Mobile', 'Admin', 'Design']
 const NAV_LEFT  = [{ label: 'HOME', href: '/' }, { label: 'ABOUT', href: '/about' }]
-const NAV_RIGHT = [{ label: 'PROJECT QUEST', href: 'https://req.jji.kr' }]
+const NAV_RIGHT = [{ label: 'PROJECT REQUEST', href: 'https://req.jji.kr' }]
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)

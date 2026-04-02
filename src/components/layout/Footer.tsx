@@ -1,8 +1,8 @@
 import Link from 'next/link'
 
-const NAV_LINKS = ['Home', 'About', 'Work', 'Project Quest']
+const NAV_LINKS = ['Home', 'About', 'Work', 'Project Request']
 const hrefs: Record<string, string> = {
-  'Home': '/', 'About': '/about', 'Work': '/work', 'Project Quest': 'https://req.jji.kr'
+  'Home': '/', 'About': '/about', 'Work': '/work', 'Project Request': 'https://req.jji.kr'
 }
 
 export default function Footer() {
