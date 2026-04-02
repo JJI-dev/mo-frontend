@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const NAV_LINKS = ['Home', 'About', 'Work', 'Project Quest']
 const hrefs: Record<string, string> = {
-  'Home': '/', 'About': '/about', 'Work': '/work', 'Project Quest': '/project-quest'
+  'Home': '/', 'About': '/about', 'Work': '/work', 'Project Quest': 'https://req.jji.kr'
 }
 
 export default function Footer() {
@@ -26,8 +26,8 @@ export default function Footer() {
           </div>
           <div className="footer-nav-col">
             <p className="footer-nav-head">Contact</p>
-            <a href="mailto:hello@mo.jji.kr" className="footer-nav-link">contact@jji.kr</a>
-            <a href="https://mo.jji.kr" target="_blank" rel="noopener noreferrer" className="footer-nav-link">mo@jji.kr</a>
+            <a href="mailto:contact@jji.kr" className="footer-nav-link">contact@jji.kr</a>
+            <a href="mailto:mo@jji.krr" target="_blank" rel="noopener noreferrer" className="footer-nav-link">mo@jji.kr</a>
           </div>
         </div>
       </div>

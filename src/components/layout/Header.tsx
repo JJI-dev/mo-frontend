@@ -23,7 +23,7 @@ const LogoMO = () => (
 
 const CATS = ['All', 'Web', 'Mobile', 'Admin', 'Design']
 const NAV_LEFT  = [{ label: 'HOME', href: '/' }, { label: 'ABOUT', href: '/about' }]
-const NAV_RIGHT = [{ label: 'PROJECT QUEST', href: '/project-quest' }]
+const NAV_RIGHT = [{ label: 'PROJECT QUEST', href: 'https://req.jji.kr' }]
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -95,7 +95,7 @@ export default function Header() {
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-          <Link href="/contact" className="nav-contact nav-contact-desktop">CONTACT</Link>
+          <Link href="mailto:contact@jji.kr" className="nav-contact nav-contact-desktop">CONTACT</Link>
           <button onClick={() => setMobOpen(p => !p)} aria-label="Menu" className="nav-ham"
             style={{ display: 'none', alignItems: 'center', justifyContent: 'center', padding: '10px 6px' }}>
             <svg
