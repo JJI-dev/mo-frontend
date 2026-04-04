@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://mo.jji.kr
+
+# Sitemaps
+Sitemap: https://mo.jji.kr/sitemap.xml
