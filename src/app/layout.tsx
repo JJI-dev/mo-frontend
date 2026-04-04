@@ -7,6 +7,9 @@ import LoadingScreen from '@/components/LoadingScreen'
 export const metadata: Metadata = {
   title: 'Studio | JJI-MO',
   description: '웹, 모바일, 디자인 — 디지털 경험을 만드는 크리에이티브 스튜디오',
+  alternates: {
+    canonical: 'https://mo.jji.kr', 
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
